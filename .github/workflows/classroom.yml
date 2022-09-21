@@ -16,6 +16,8 @@ jobs:
       points: ${{ steps.autograding.outputs.points}}
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
       - uses: actions-rs/toolchain@v1
         with:
           profile: minimal
