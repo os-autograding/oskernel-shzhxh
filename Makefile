@@ -12,4 +12,4 @@ build:
 run:
 	if [ ! -f $(IMG_NAME) ]; then wget $(IMG_URL); fi
 	# timeout $(TIMEOUT) qemu-system-riscv64 -machine virt -drive file=$(IMG_NAME),if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 -kernel kernel-qemu -nographic -smp 1 -m 128m | tee qemu_run_output.txt
-	qemu-system-riscv64 -machine virt -drive file=$(IMG_NAME),if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 -kernel kernel-qemu -nographic -smp 1 -m 128m
+	qemu-system-riscv64 -machine virt  -smp 1 -m 256M -append "LOG=error:ROOTPROC=busybox?sh?busybox_testcode.sh" -drive file=$(IMG_NAME),if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 -kernel kernel-qemu -nographic
