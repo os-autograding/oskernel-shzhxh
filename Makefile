@@ -14,5 +14,5 @@ run:
 	# busybox测试
 	qemu-system-riscv64 -machine virt  -smp 1 -m 256M -append "LOG=error:ROOTPROC=busybox?sh?busybox_testcode.sh" -drive file=$(IMG_NAME),if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 -kernel kernel-qemu -nographic | tee qemu_run_output.txt
 	# libc-test测试
-	qemu-system-riscv64 -machine virt  -smp 1 -m 256M -append "LOG=error:ROOTPROC=busybox?sh?run-dynamic.sh" -drive file=$(IMG_NAME),if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 -kernel kernel-qemu -nographic | tee qemu_run_output.txt
-	qemu-system-riscv64 -machine virt  -smp 1 -m 256M -append "LOG=error:ROOTPROC=busybox?sh?run-static.sh" -drive file=$(IMG_NAME),if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 -kernel kernel-qemu -nographic | tee qemu_run_output.txt
+	qemu-system-riscv64 -machine virt  -smp 1 -m 256M -append "LOG=error:ROOTPROC=busybox?sh?run-dynamic.sh" -drive file=$(IMG_NAME),if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 -kernel kernel-qemu -nographic | tee -a qemu_run_output.txt
+	qemu-system-riscv64 -machine virt  -smp 1 -m 512M -append "LOG=error:ROOTPROC=busybox?sh?run-static.sh" -drive file=$(IMG_NAME),if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 -kernel kernel-qemu -nographic | tee -a qemu_run_output.txt
