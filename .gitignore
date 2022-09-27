@@ -9,3 +9,4 @@ asm.S
 kernel-qemu
 sbi-qemu
 .github/classroom
+*.img
